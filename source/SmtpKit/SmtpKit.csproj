@@ -13,6 +13,7 @@
     <FileVersion>0.1.0</FileVersion>
     <Authors>Christopher Whitley</Authors>
     <Company>Aristurtle</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright (c) 2022 Christoipher Whitley</Copyright>
     <PackageProjectUrl>https://github.com/AristurtleDev/SmtpKit</PackageProjectUrl>
     <RepositoryUrl>https://github.com/AristurtleDev/SmtpKit</RepositoryUrl>
