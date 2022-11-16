@@ -6,6 +6,26 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>SmtpKit</PackageId>
+    <Version>0.1.0</Version>
+    <AssemblyVersion>0.1.0</AssemblyVersion>
+    <FileVersion>0.1.0</FileVersion>
+    <Authors>Christopher Whitley</Authors>
+    <Company>Aristurtle</Company>
+    <Copyright>Copyright (c) 2022 Christoipher Whitley</Copyright>
+    <PackageProjectUrl>https://github.com/AristurtleDev/SmtpKit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AristurtleDev/SmtpKit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>SmtpKit;Smtp;Email;Fluent</PackageTags>
+    <Description>
+      A small .NET library for sending emails using SMTP with a fluent syntax.
+      Project Repo: https://github.com/AristurtleDev/SmtpKit
+      Issues: https://github.com/AristurtleDev/SmtpKit/issues
+    </Description>
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
