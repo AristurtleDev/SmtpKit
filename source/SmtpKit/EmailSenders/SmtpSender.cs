@@ -70,7 +70,7 @@ public sealed class SmtpSender : IEmailSender
     /// <param name="port">
     ///     The prot to use when connecting to the <paramref name="host"/>.
     /// </param>
-    internal SmtpSender(string host, int port) => _factory = new(host, port);
+    public SmtpSender(string host, int port) => _factory = new(host, port);
 
     /// <summary>
     ///     Synchronously sends the specified <see cref="MailMessage"/> instance
