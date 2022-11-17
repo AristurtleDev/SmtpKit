@@ -55,7 +55,7 @@ public static class ServiceCollectionExtensions
     ///     A new <see cref="IEmailFactoryBuilder"/> instance to be used to
     ///     finalize configuration of the service.
     /// </returns>
-    public static IEmailFactoryBuilder AddSmtpKit(this IServiceCollection services, string from, string? name)
+    public static IEmailFactoryBuilder AddSmtpKit(this IServiceCollection services, string from, string? name = default)
     {
         return new EmailFactoryBuilder(services, from, name);
     }
