@@ -348,24 +348,34 @@ public interface IEmail
     ///     Synchronously sends the current <see cref="IEmail"/> instance using
     ///     the <see cref="IEmailSender"/> specified during initialization.
     /// </summary>
+    /// <remarks>
+    ///     This instance will be disposed of automatically after sending.
+    /// </remarks>
     /// <param name="token">
-    /// 
+    ///     The token to monitor for cancellation requests.  Uses 
+    ///     <see cref="CancellationToken.None"/> if one is not provided.
     /// </param>
     /// <returns>
-    ///     The current instance of <see cref="IEmail"/>.
+    ///     An instance of the <see cref="SendResult"/> class that represents
+    ///     the result of sending this email.
     /// </returns>
-    void Send(CancellationToken token = default(CancellationToken));
+    SendResult Send(CancellationToken token = default(CancellationToken));
 
 
     /// <summary>
     ///     Asynchronously sends the current <see cref="IEmail"/> instance using
     ///     the <see cref="IEmailSender"/> specified during initialization.
     /// </summary>
+    /// <remarks>
+    ///     This instance will be disposed of automatically after sending.
+    /// </remarks>
     /// <param name="token">
-    /// 
+    ///     The token to monitor for cancellation requests.  Uses 
+    ///     <see cref="CancellationToken.None"/> if one is not provided.
     /// </param>
     /// <returns>
-    ///     The current instance of <see cref="IEmail"/>.
+    ///     A new <see cref="Task"/> object that contains the results of this
+    ///     asynchronous operation.
     /// </returns>
-    Task SendAsync(CancellationToken token = default(CancellationToken));
+    Task<SendResult> SendAsync(CancellationToken token = default(CancellationToken));
 }

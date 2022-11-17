@@ -27,13 +27,20 @@ using SmtpKit.EmailSenders;
 
 namespace SmtpKit;
 
-public sealed class Email : IEmail
+public sealed class Email : IEmail, IDisposable
 {
     //  This is the mail message that is being build by this instance
     private MailMessage _message;
 
     private IEmailSender _sender;
     private IEmailRenderer _renderer;
+
+    /// <summary>
+    ///     Gets a <see cref="bool"/> value that indicates if resources managed
+    ///     by this instance of the <see cref="Email"/> class have been
+    ///     released.
+    /// </summary>
+    public bool IsDisposed { get; private set; } = false;
 
     private Email(MailAddress from, IEmailSender sender)
     {
@@ -47,6 +54,8 @@ public sealed class Email : IEmail
 
         _renderer = new ReplacementRenderer();
     }
+
+    ~Email() => Dispose(false);
 
     /// <summary>
     ///     Creates a new <see cref="Email"/> instance with the specified
@@ -568,26 +577,53 @@ public sealed class Email : IEmail
     ///     Synchronously sends the current <see cref="IEmail"/> instance using
     ///     the <see cref="IEmailSender"/> specified during initialization.
     /// </summary>
+    /// <remarks>
+    ///     This instance will be disposed of automatically after sending.
+    /// </remarks>
     /// <param name="token">
-    /// 
+    ///     The token to monitor for cancellation requests.  Uses 
+    ///     <see cref="CancellationToken.None"/> if one is not provided.
     /// </param>
     /// <returns>
-    ///     The current instance of <see cref="IEmail"/>.
+    ///     An instance of the <see cref="SendResult"/> class that represents
+    ///     the result of sending this email.
     /// </returns>
-    public void Send(CancellationToken token = default(CancellationToken)) => _sender.Send(_message, token);
+    public SendResult Send(CancellationToken token = default(CancellationToken))
+    {
+        SendResult result = _sender.Send(_message, token);
+
+        //  Dispose after sending so attachments are disposed of
+        Dispose();
+
+        return result;
+    }
 
 
     /// <summary>
     ///     Asynchronously sends the current <see cref="IEmail"/> instance using
     ///     the <see cref="IEmailSender"/> specified during initialization.
     /// </summary>
+    /// <remarks>
+    ///     This instance will be disposed of automatically after sending.
+    /// </remarks>
     /// <param name="token">
-    /// 
+    ///     The token to monitor for cancellation requests.  Uses 
+    ///     <see cref="CancellationToken.None"/> if one is not provided.
     /// </param>
     /// <returns>
-    ///     The current instance of <see cref="IEmail"/>.
+    ///     A new <see cref="Task"/> object that contains the results of this
+    ///     asynchronous operation.
     /// </returns>
-    public Task SendAsync(CancellationToken token = default(CancellationToken)) => _sender.SendAsync(_message, token);
+    public async Task<SendResult> SendAsync(CancellationToken token = default(CancellationToken))
+    {
+        SendResult result = await _sender.SendAsync(_message, token);
+
+        //  Dispose after sending so attachments are disposed of.
+        Dispose();
+
+        return result;
+
+    }
 
     /// <summary>
     ///     Returns a new <see cref="string"/> containing the representation of
@@ -713,6 +749,29 @@ public sealed class Email : IEmail
     #pragma warning restore format
     };
 
+    /// <summary>
+    ///     Releases all resources used by this <see cref="Email"/> instance.
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 
+    private void Dispose(bool isDisposing)
+    {
+        if (IsDisposed)
+        {
+            return;
+        }
 
+        if (isDisposing)
+        {
+            //  Dispose of message so that streams from attachments are
+            //  disposed of properly.
+            _message.Dispose();
+        }
+
+        IsDisposed = true;
+    }
 }
