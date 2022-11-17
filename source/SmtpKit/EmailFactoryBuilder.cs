@@ -18,6 +18,8 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ----------------------------------------------------------------------------- */
+using System.Security.Cryptography.X509Certificates;
+
 using Microsoft.Extensions.DependencyInjection;
 
 using SmtpKit.EmailSenders;
@@ -67,13 +69,59 @@ internal class EmailFactoryBuilder : IEmailFactoryBuilder
     ///     factory to an SMTP server.
     /// </summary>
     /// <param name="host">
-    ///     The IPv4 address or host name of the SMTP server to send the email
-    ///     messages to for delivery.
+    ///     A <see cref="string"/> containing the IPv4 address or host name
+    ///     of the Smtp server to connect to.
     /// </param>
     /// <param name="port">
-    ///     The port to connect with on the <paramref name="host"/>.
+    ///     An <see cref="int"/> value that represents the port to connect to
+    ///     on the <paramref name="host"/>.
     /// </param>
     public void UseSmtp(string host, int port) => AddEmailFactory(new SmtpSender(host, port));
+
+    /// <summary>
+    ///     Configures the <see cref="IEmailFactory"/> instance being added to
+    ///     the services container to send the email messages created by the
+    ///     factory to an SMTP server.
+    /// </summary>
+    /// <param name="host">
+    ///     A <see cref="string"/> containing the IPv4 address or host name
+    ///     of the Smtp server to connect to.
+    /// </param>
+    /// <param name="port">
+    ///     An <see cref="int"/> value that represents the port to connect to
+    ///     on the <paramref name="host"/>.
+    /// </param>
+    /// <param name="username">
+    ///     A <see cref="string"/> containing the username used to authenticate
+    ///     with the Smtp server.
+    /// </param>
+    /// <param name="password">
+    ///     A <see cref="string"/> containing the password used to authenticate
+    ///     with the Smtp server.
+    /// </param>
+    public void UseSmtp(string host, int port, string username, string password) =>
+        AddEmailFactory(new SmtpSender(host, port, username, password));
+
+    /// <summary>
+    ///     Configures the <see cref="IEmailFactory"/> instance being added to
+    ///     the services container to send the email messages created by the
+    ///     factory to an SMTP server.
+    /// </summary>
+    /// <param name="host">
+    ///     A <see cref="string"/> containing the IPv4 address or host name
+    ///     of the Smtp server to connect to.
+    /// </param>
+    /// <param name="port">
+    ///     An <see cref="int"/> value that represents the port to connect to
+    ///     on the <paramref name="host"/>.
+    /// </param>
+    /// <param name="certificate">
+    ///     An <see cref="X509Certificate"/> certificate used to establish
+    ///     a Secure Sockets Layer (SSL) connection when connecting to the
+    ///     Smtp server.  
+    /// </param>
+    public void UseSmtp(string host, int port, X509Certificate certificate) =>
+        AddEmailFactory(new SmtpSender(host, port, certificate));
 
     /// <summary>
     ///     Adds a new instance of <see cref="IEmailFactory"/> to the services
