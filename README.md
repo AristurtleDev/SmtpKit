@@ -4,3 +4,5 @@
 A Small .NET Library For Sending Emails Using SMTP
 </h1>
 
+Documentation in progress ...
+
