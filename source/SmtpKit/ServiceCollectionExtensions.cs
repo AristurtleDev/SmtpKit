@@ -36,7 +36,7 @@ public static class ServiceCollectionExtensions
     ///     When this method returns, you will be provided with a new
     ///     <see cref="IEmailFactoryBuilder"/> instance.  You must use one of
     ///     the additional methods provided by this instance to finish
-    ///     coniguring the services.
+    ///     configuring the services.
     /// </remarks>
     /// <param name="services">
     ///     The <see cref="IServiceCollection"/> instance to add the 

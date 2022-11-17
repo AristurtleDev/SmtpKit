@@ -35,7 +35,7 @@ public sealed class ReplacementRenderer : IEmailRenderer
     ///     The template to render.
     /// </param>
     /// <param name="model">
-    ///     An optioanl model to use when rendering.
+    ///     An optional model to use when rendering.
     /// </param>
     /// <param name="isHtml">
     ///     Whether the render output will contain HTML.
@@ -71,7 +71,7 @@ public sealed class ReplacementRenderer : IEmailRenderer
     ///     The template to render.
     /// </param>
     /// <param name="model">
-    ///     An optioanl model to use when rendering.
+    ///     An optional model to use when rendering.
     /// </param>
     /// <param name="isHtml">
     ///     Whether the render output will contain HTML.

@@ -1,11 +1,9 @@
 <h1 align="center">
-<img src="https://raw.githubusercontent.com/AristurtleDev/Branding/main/imgs/aristurtle-logo/aristurtle-logo-256-dark.png#gh-light-mode-only" alt="Aristurtle" width="256">
-<img src="https://raw.githubusercontent.com/AristurtleDev/Branding/main/imgs/aristurtle-logo/aristurtle-logo-256-light.png#gh-dark-mode-only" alt="Aristurtle" width="256">
+<img src="https://raw.githubusercontent.com/AristurtleDev/SmtpKit/main/.github/smtpkit.png" alt="SmtpKit Logo">
 <br/>
-Smtp Kit
+How To Contribute To SmtpKit
 </h1>
 
-# How to Contribute to SmtpKit
 Contributions are made to this repository via Issues and Pull Requests (PRs).  The following are some general guidelines that cover both of these methods.  More specific guidelines are covered in their respective sections below.
 
 *   Issues and Pull requests should abide by the Code of Conduct
