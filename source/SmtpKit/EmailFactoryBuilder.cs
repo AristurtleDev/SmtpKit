@@ -124,6 +124,18 @@ internal class EmailFactoryBuilder : IEmailFactoryBuilder
         AddEmailFactory(new SmtpSender(host, port, certificate));
 
     /// <summary>
+    ///     Configures the <see cref="IEmailFactory"/> instance being added to
+    ///     the services container to send the email messages created by the
+    ///     factory to a text file in the.
+    /// </summary>
+    /// <param name="outDir">
+    ///     A <see cref="string"/> containing the absolute path to the directory
+    ///     to output the email messages in.  If the directory does not exist,
+    ///     it will be created.
+    /// </param>
+    public void UseFileSystem(string outDir) => AddEmailFactory(new FileSystemSender(outDir));
+
+    /// <summary>
     ///     Adds a new instance of <see cref="IEmailFactory"/> to the services
     ///     container.
     /// </summary>
