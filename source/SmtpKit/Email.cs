@@ -27,13 +27,20 @@ using SmtpKit.EmailSenders;
 
 namespace SmtpKit;
 
-public sealed class Email : IEmail
+public sealed class Email : IEmail, IDisposable
 {
     //  This is the mail message that is being build by this instance
     private MailMessage _message;
 
     private IEmailSender _sender;
     private IEmailRenderer _renderer;
+
+    /// <summary>
+    ///     Gets a <see cref="bool"/> value that indicates if resources managed
+    ///     by this instance of the <see cref="Email"/> class have been
+    ///     released.
+    /// </summary>
+    public bool IsDisposed { get; private set; } = false;
 
     private Email(MailAddress from, IEmailSender sender)
     {
@@ -47,6 +54,8 @@ public sealed class Email : IEmail
 
         _renderer = new ReplacementRenderer();
     }
+
+    ~Email() => Dispose(false);
 
     /// <summary>
     ///     Creates a new <see cref="Email"/> instance with the specified
@@ -715,6 +724,29 @@ public sealed class Email : IEmail
     #pragma warning restore format
     };
 
+    /// <summary>
+    ///     Releases all resources used by this <see cref="Email"/> instance.
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
 
+    private void Dispose(bool isDisposing)
+    {
+        if (IsDisposed)
+        {
+            return;
+        }
 
+        if (isDisposing)
+        {
+            //  Dispose of message so that streams from attachments are
+            //  disposed of properly.
+            _message.Dispose();
+        }
+
+        IsDisposed = true;
+    }
 }
