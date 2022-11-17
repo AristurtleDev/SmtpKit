@@ -48,6 +48,23 @@ public sealed class Email : IEmail
         _renderer = new ReplacementRenderer();
     }
 
+    /// <summary>
+    ///     Creates a new <see cref="Email"/> instance usuing the specified
+    ///     <see cref="MailAddress"/> as the From field and the specified
+    ///     <see cref="IEmailSender"/> to send the email message with.
+    /// </summary>
+    /// <param name="address">
+    ///     The <see cref="MailAddress"/> instance to set as the From field
+    ///     of the <see cref="Email"/> instance. created.
+    /// </param>
+    /// <param name="sender">
+    ///     The <see cref="IEmailSender"/> instance that will be used to send
+    ///     the email message.
+    /// </param>
+    /// <returns>
+    ///     The created <see cref="Email"/> instance as an instance of
+    ///     <see cref="IEmail"/>.
+    /// </returns>
     public static IEmail Create(MailAddress from, IEmailSender sender) => new Email(from, sender);
 
     /// <summary>
