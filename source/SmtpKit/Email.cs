@@ -48,7 +48,6 @@ public sealed class Email : IEmail
         _renderer = new ReplacementRenderer();
     }
 
-    public static IEmail Create(MailAddress from) => Create(from, new ConsoleSender());
     public static IEmail Create(MailAddress from, IEmailSender sender) => new Email(from, sender);
 
     /// <summary>
