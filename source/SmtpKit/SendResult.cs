@@ -27,7 +27,7 @@ public class SendResult
 {
     /// <summary>
     ///     Gets a <see langword="IList"/> containing <see cref="string"/> 
-    ///     elements for each error that occured while sending the email
+    ///     elements for each error that occurred while sending the email
     ///     message.
     /// </summary>
     public IList<string> Errors { get; } = new List<string>();

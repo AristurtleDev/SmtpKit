@@ -24,12 +24,12 @@ namespace SmtpKit.EmailSenders;
 
 /// <summary>
 ///     An interface that exposes methods for delivering the contents of an 
-///     instnace of the <see cref="MailMessage"/> class.
+///     instance of the <see cref="MailMessage"/> class.
 /// </summary>
 public interface IEmailSender
 {
     /// <summary>
-    ///     Synchronously delievers the given instance of the 
+    ///     Synchronously delivers the given instance of the 
     ///     <see cref="MailMessage"/> class.
     /// </summary>
     /// <param name="email">
@@ -46,7 +46,7 @@ public interface IEmailSender
     SendResult Send(MailMessage email, CancellationToken token = default(CancellationToken));
 
     /// <summary>
-    ///     Asynchronously delievers the given instance of the 
+    ///     Asynchronously delivers the given instance of the 
     ///     <see cref="MailMessage"/> class.
     /// </summary>
     /// <param name="email">

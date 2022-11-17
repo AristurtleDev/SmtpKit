@@ -98,7 +98,7 @@ public sealed class Email : IEmail
         Create(new MailAddress(emailAddress, displayName), sender);
 
     /// <summary>
-    ///     Creates a new <see cref="Email"/> instance usuing the specified
+    ///     Creates a new <see cref="Email"/> instance using the specified
     ///     <see cref="MailAddress"/> as the From field and the specified
     ///     <see cref="IEmailSender"/> to send the email message with.
     /// </summary>
@@ -466,10 +466,10 @@ public sealed class Email : IEmail
     ///     </para>
     ///     <para>
     ///         If <see langword="null"/> is given, media type will be 
-    ///         determiend by attachment name.  
+    ///         determined by attachment name.  
     ///     </para>
     ///     <para>
-    ///         If media type cannot be determiend, "application/octect" will be
+    ///         If media type cannot be determined, "application/octet" will be
     ///         used.
     ///     </para>
     /// </param>
@@ -516,10 +516,10 @@ public sealed class Email : IEmail
     ///     </para>
     ///     <para>
     ///         If <see langword="null"/> is given, media type will be 
-    ///         determiend by attachment name.  
+    ///         determined by attachment name.  
     ///     </para>
     ///     <para>
-    ///         If media type cannot be determiend, "application/octect" will be
+    ///         If media type cannot be determined, "application/octet" will be
     ///         used.
     ///     </para>
     /// </param>
@@ -626,7 +626,7 @@ public sealed class Email : IEmail
     private static string GetMIMEType(string? ext) => ext switch
     {
         #pragma warning disable format
-        //  null or empty check first so we dont' evaluate every case just
+        //  null or empty check first so we don't' evaluate every case just
         //  to realize it's just a null or empty string
         null or "" => "application/octet-stream",
 

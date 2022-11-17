@@ -25,7 +25,7 @@ namespace SmtpKit.EmailSenders;
 /// <summary>
 ///     Extensions methods for the <see cref="SmtpClient"/> class.
 /// </summary>
-internal static class SmtpClientExtentions
+internal static class SmtpClientExtensions
 {
     /// <summary>
     ///     Asynchronously sends the specified <see cref="MailMessage"/> 

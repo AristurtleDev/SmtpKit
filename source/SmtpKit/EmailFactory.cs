@@ -25,7 +25,7 @@ using SmtpKit.EmailSenders;
 namespace SmtpKit;
 
 /// <summary>
-///     A factory for creating pre-configured instnaces of the an 
+///     A factory for creating pre-configured instances of the an 
 ///     <see cref="IEmail"/> instance.
 /// </summary>
 public sealed class EmailFactory : IEmailFactory

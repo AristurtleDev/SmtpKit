@@ -288,10 +288,10 @@ public interface IEmail
     ///     </para>
     ///     <para>
     ///         If <see langword="null"/> is given, media type will be 
-    ///         determiend by attachment name.  
+    ///         determined by attachment name.  
     ///     </para>
     ///     <para>
-    ///         If media type cannot be determiend, "application/octect" will be
+    ///         If media type cannot be determined, "application/octet" will be
     ///         used.
     ///     </para>
     /// </param>
@@ -319,10 +319,10 @@ public interface IEmail
     ///     </para>
     ///     <para>
     ///         If <see langword="null"/> is given, media type will be 
-    ///         determiend by attachment name.  
+    ///         determined by attachment name.  
     ///     </para>
     ///     <para>
-    ///         If media type cannot be determiend, "application/octect" will be
+    ///         If media type cannot be determined, "application/octet" will be
     ///         used.
     ///     </para>
     /// </param>

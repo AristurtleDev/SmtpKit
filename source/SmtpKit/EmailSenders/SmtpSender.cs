@@ -39,7 +39,7 @@ public sealed class SmtpSender : IEmailSender
         private readonly int _port;
 
         /// <summary>
-        ///     Initialzies a new instance of the 
+        ///     Initializes a new instance of the 
         ///     <see cref="SmtpClientFactory"/> class.
         /// </summary>
         /// <param name="host">
@@ -53,7 +53,7 @@ public sealed class SmtpSender : IEmailSender
         /// <summary>
         ///     Creates a new instance of the <see cref="SmtpClient"/> class
         ///     using the host and port this <see cref="SmtpClientFactory"/>
-        ///     was initialied with.
+        ///     was initialized with.
         /// </summary>
         /// <returns></returns>
         public SmtpClient Create() => new SmtpClient(_host, _port);
@@ -65,7 +65,7 @@ public sealed class SmtpSender : IEmailSender
     ///     Initializes a new instance of the <see cref="SmtpSender"/> class.
     /// </summary>
     /// <param name="host">
-    ///     The IPv4 address or host name of the Smpt serer.
+    ///     The IPv4 address or host name of the Smtp serer.
     /// </param>
     /// <param name="port">
     ///     The prot to use when connecting to the <paramref name="host"/>.
@@ -74,7 +74,7 @@ public sealed class SmtpSender : IEmailSender
 
     /// <summary>
     ///     Synchronously sends the specified <see cref="MailMessage"/> instance
-    ///     to an SMTP server for delievery.
+    ///     to an SMTP server for delivery.
     /// </summary>
     /// <param name="email">
     ///     The <see cref="MailMessage"/> instance to send to the SMTP server
@@ -94,7 +94,7 @@ public sealed class SmtpSender : IEmailSender
 
     /// <summary>
     ///     Asynchronously sends the specified <see cref="MailMessage"/>
-    ///     instance to an SMTP server for delievery.
+    ///     instance to an SMTP server for delivery.
     /// </summary>
     /// <param name="email">
     ///     The <see cref="MailMessage"/> instance to send to the SMTP server
