@@ -116,11 +116,14 @@ public sealed class SmtpSender : IEmailSender
 
             if (_certificate is not null)
             {
+                client.EnableSsl = true;
                 client.ClientCertificates.Add(_certificate);
             }
 
             if (_credentials is not null)
             {
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
                 client.Credentials = _credentials;
             }
 
