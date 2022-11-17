@@ -49,6 +49,55 @@ public sealed class Email : IEmail
     }
 
     /// <summary>
+    ///     Creates a new <see cref="Email"/> instance with the specified
+    ///     <paramref name="emailAddress"/> set to the From field, and using the
+    ///     specified <paramref name="sender"/> to send the email message with.
+    /// </summary>
+    /// <param name="emailAddress">
+    ///     A <see cref="string"/> containing the email address to set to the
+    ///     From field of the <see cref="Email"/> instance created.
+    /// </param>
+    /// <param name="displayName">
+    ///     A <see cref="string"/> containing the display name to use for the
+    ///     email address. 
+    /// </param>
+    /// <param name="sender">
+    ///     The <see cref="IEmailSender"/> instance that will be used to send
+    ///     the email message.
+    /// </param>
+    /// <returns>
+    ///     The created <see cref="Email"/> instance as an instance of
+    ///     <see cref="IEmail"/>.
+    /// </returns>
+    public static IEmail Create(string emailAddress, IEmailSender sender) =>
+        Create(new MailAddress(emailAddress), sender);
+
+    /// <summary>
+    ///     Creates a new <see cref="Email"/> instance with the specified
+    ///     <paramref name="emailAddress"/> and <paramref name="displayName"/>
+    ///     set to the From field, and using the specified
+    ///     <paramref name="sender"/> to send the email message with.
+    /// </summary>
+    /// <param name="emailAddress">
+    ///     A <see cref="string"/> containing the email address to set to the
+    ///     From field of the <see cref="Email"/> instance created.
+    /// </param>
+    /// <param name="displayName">
+    ///     A <see cref="string"/> containing the display name to use for the
+    ///     email address. 
+    /// </param>
+    /// <param name="sender">
+    ///     The <see cref="IEmailSender"/> instance that will be used to send
+    ///     the email message.
+    /// </param>
+    /// <returns>
+    ///     The created <see cref="Email"/> instance as an instance of
+    ///     <see cref="IEmail"/>.
+    /// </returns>
+    public static IEmail Create(string emailAddress, string displayName, IEmailSender sender) =>
+        Create(new MailAddress(emailAddress, displayName), sender);
+
+    /// <summary>
     ///     Creates a new <see cref="Email"/> instance usuing the specified
     ///     <see cref="MailAddress"/> as the From field and the specified
     ///     <see cref="IEmailSender"/> to send the email message with.
