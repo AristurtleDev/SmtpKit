@@ -569,7 +569,8 @@ public sealed class Email : IEmail
     ///     the <see cref="IEmailSender"/> specified during initialization.
     /// </summary>
     /// <param name="token">
-    /// 
+    ///     The token to monitor for cancellation requests.  Uses 
+    ///     <see cref="CancellationToken.None"/> if one is not provided.
     /// </param>
     /// <returns>
     ///     The current instance of <see cref="IEmail"/>.
@@ -582,7 +583,8 @@ public sealed class Email : IEmail
     ///     the <see cref="IEmailSender"/> specified during initialization.
     /// </summary>
     /// <param name="token">
-    /// 
+    ///     The token to monitor for cancellation requests.  Uses 
+    ///     <see cref="CancellationToken.None"/> if one is not provided.
     /// </param>
     /// <returns>
     ///     The current instance of <see cref="IEmail"/>.
